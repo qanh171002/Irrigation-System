@@ -10,7 +10,7 @@ const COLORS = {
   
   function Stat({ icon, title, value, color = "gray" }) {
     return (
-      <div className="p-[1.2rem] bg-white border border-gray-100 rounded-md p-4 grid grid-cols-[4rem_1fr] grid-rows-2 gap-x-4 gap-y-1">
+      <div className="bg-white border border-gray-100 rounded-md p-4 grid grid-cols-[4rem_1fr] grid-rows-2 gap-x-4 gap-y-1">
         <div className={`row-span-2 aspect-square flex items-center justify-center rounded-full ${COLORS[color] || COLORS.gray}`}>
           {icon && React.cloneElement(icon, { className: "w-8 h-8" })}
         </div>
