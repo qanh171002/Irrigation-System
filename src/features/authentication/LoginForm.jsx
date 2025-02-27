@@ -14,7 +14,16 @@ function LoginForm() {
         e.preventDefault();
         if (!email || !password) return;
         if(email === 'test@gmail.com' && password === '123456') navigate('/dashboard')
-    }
+        // try {
+        //     const response = await login({
+        //         email,
+        //         password,
+        //     })
+        //     }
+        // catch (error) {
+        //     setError("Đã có lỗi xảy ra. Vui lòng thử lại.");
+        //     console.error(error)
+        }
 
     return (
         <Form onSubmit={handleSubmit}>
