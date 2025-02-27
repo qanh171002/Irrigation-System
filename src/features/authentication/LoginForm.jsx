@@ -19,11 +19,17 @@ function LoginForm() {
         //         email,
         //         password,
         //     })
+        //     if(response.status === true){
+        //         sessionStorage.setItem('isLoggedin', response.token)
+        //         navigate('/dashboard')
         //     }
+        //     }
+        
         // catch (error) {
         //     setError("Đã có lỗi xảy ra. Vui lòng thử lại.");
         //     console.error(error)
-        }
+        // }
+    }
 
     return (
         <Form onSubmit={handleSubmit}>
