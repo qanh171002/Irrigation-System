@@ -3,6 +3,8 @@ const Button = ({ size = "medium", variation = "primary", className, ...props })
       small: "text-xs py-1 px-2 uppercase font-semibold text-center",
       medium: "text-sm py-3 px-4 font-medium",
       large: "text-lg py-3 px-6 font-medium",
+      xlarge: "text-xl py-6 px-10 font-semibold",
+
     };
   
     const variationClasses = {

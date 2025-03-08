@@ -1,5 +1,9 @@
+import StatisticsLayout from "../features/statistics/StatisticsLayout"
+
 function Statistics() {
-  return <div>STATISTICS</div>;
+  return (
+    <StatisticsLayout/>
+  )
 }
 
-export default Statistics;
+export default Statistics
