@@ -5,9 +5,10 @@ import {
 } from "react-icons/hi2";
 import ButtonIcon from "./ButtonIcon";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../api/auth";
 
 function HeaderMenu() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <ul className="flex gap-1">
       <li>
@@ -21,8 +22,13 @@ function HeaderMenu() {
         </ButtonIcon>
       </li>
       <li>
-        <ButtonIcon onClick={() => navigate('/login')}>
-          <HiArrowRightOnRectangle />
+        <ButtonIcon>
+          <HiArrowRightOnRectangle
+            onClick={() => {
+              logout();
+              navigate("login");
+            }}
+          />
         </ButtonIcon>
       </li>
     </ul>

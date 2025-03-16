@@ -4,15 +4,15 @@ import Table from "../ui/Table";
 import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "../utils/constants";
 
-
 function Logs() {
   const [searchParams] = useSearchParams();
-  const currentPage = searchParams.get("page") ? Number(searchParams.get("page")) : 1;
+  const currentPage = searchParams.get("page")
+    ? Number(searchParams.get("page"))
+    : 1;
 
-  // Tính toán dữ liệu cho trang hiện tại
   const startIndex = (currentPage - 1) * PAGE_SIZE;
   const endIndex = startIndex + PAGE_SIZE;
-  const currentData = mockLogsData.slice(startIndex, endIndex); 
+  const currentData = mockLogsData.slice(startIndex, endIndex);
   return (
     <Table columns="grid-cols-[0.6fr_2fr_2.4fr_1.4fr_1fr_3.2rem]">
       <Table.Header>
