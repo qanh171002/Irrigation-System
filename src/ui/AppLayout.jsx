@@ -7,12 +7,11 @@ function AppLayout() {
     <div className="grid h-screen grid-cols-[18rem_1fr] grid-rows-[auto_1fr]">
       <Header />
       <Sidebar />
-      <main className="bg-gray-50 px-[4.8rem] pt-16 pb-[6.4rem] overflow-auto scrollbar-hide">
-        <div className="max-w-[120rem] mx-auto flex flex-col gap-8">
+      <main className="scrollbar-hide overflow-auto bg-gray-50 px-[4.8rem] pt-16 pb-[6.4rem]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8">
           <Outlet />
         </div>
       </main>
-
     </div>
   );
 }

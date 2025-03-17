@@ -7,6 +7,7 @@ import Statistics from "./pages/Statistics";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import ProtectedRoute from "./features/authentication/ProtectedRoute";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </Route>
         </Route>
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );

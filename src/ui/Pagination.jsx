@@ -25,9 +25,13 @@ function Pagination({ count }) {
   if (pageCount <= 1) return null;
 
   return (
-    <div className="w-full flex items-center justify-between">
+    <div className="flex w-full items-center justify-between">
       <p className="text-sm text-gray-600">
-        Showing <span className="font-semibold">{(currentPage - 1) * PAGE_SIZE + 1}</span> to{" "}
+        Showing{" "}
+        <span className="font-semibold">
+          {(currentPage - 1) * PAGE_SIZE + 1}
+        </span>{" "}
+        to{" "}
         <span className="font-semibold">
           {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
         </span>{" "}
@@ -38,27 +42,27 @@ function Pagination({ count }) {
         <button
           onClick={previousPage}
           disabled={currentPage === 1}
-          className={`flex items-center gap-1 px-3 py-2 rounded-md font-medium text-sm transition text-gray-700 bg-gray-100
-          ${currentPage === 1 
-            ? " text-gray-400 cursor-not-allowed"
-            : " hover:bg-green-600 hover:text-white"}`
-          }
+          className={`flex items-center gap-1 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition ${
+            currentPage === 1
+              ? "cursor-not-allowed text-gray-400"
+              : "hover:bg-green-600 hover:text-white"
+          }`}
         >
-          <HiChevronLeft className="w-5 h-5" />
+          <HiChevronLeft className="h-5 w-5" />
           <span>Previous</span>
         </button>
 
         <button
           onClick={nextPage}
           disabled={currentPage === pageCount}
-          className={`flex items-center gap-1 px-3 py-2 rounded-md font-medium text-sm transition text-gray-700 bg-gray-100
-          ${currentPage === pageCount 
-            ? " text-gray-400 cursor-not-allowed"
-            : " hover:bg-green-600 hover:text-white"}`
-          }
+          className={`flex items-center gap-1 rounded-md bg-gray-100 px-3 py-2 text-sm font-medium text-gray-700 transition ${
+            currentPage === pageCount
+              ? "cursor-not-allowed text-gray-400"
+              : "hover:bg-green-600 hover:text-white"
+          }`}
         >
           <span>Next</span>
-          <HiChevronRight className="w-5 h-5" />
+          <HiChevronRight className="h-5 w-5" />
         </button>
       </div>
     </div>

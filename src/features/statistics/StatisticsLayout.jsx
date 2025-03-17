@@ -1,14 +1,16 @@
-import StatisticsTab from "./StatisticsTab"
+import StatisticsTab from "./StatisticsTab";
 
 function StatisticsLayout() {
-    return (
-        <div className="bg-white p-6 rounded-md border border-gray-100 flex flex-col overflow-hidden">
-            <p className="font-normal text-gray-800">Average Reports</p>
-            <p className="text-xl font-normal text-gray-600 ">Weekly average overview</p>
+  return (
+    <div className="flex flex-col overflow-hidden rounded-md border border-gray-100 bg-white p-6">
+      <p className="font-normal text-gray-800">Average Reports</p>
+      <p className="text-xl font-normal text-gray-600">
+        Weekly average overview
+      </p>
 
-            <StatisticsTab />
-        </div>
-    )
+      <StatisticsTab />
+    </div>
+  );
 }
 
-export default StatisticsLayout
+export default StatisticsLayout;

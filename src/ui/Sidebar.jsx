@@ -3,7 +3,7 @@ import MainNav from "./MainNav";
 
 function Sidebar() {
   return (
-    <aside className="bg-white p-8 border-r border-gray-100 flex flex-col gap-8 row-span-full">
+    <aside className="row-span-full flex flex-col gap-8 border-r border-gray-100 bg-white p-8">
       <Logo />
       <MainNav />
     </aside>

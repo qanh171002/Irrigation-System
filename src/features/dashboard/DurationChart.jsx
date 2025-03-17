@@ -1,9 +1,18 @@
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
 function DurationChart({ pumpData }) {
-
   const activeTime = pumpData.reduce((sum, entry) => sum + entry.activeTime, 0);
-  const inactiveTime = pumpData.reduce((sum, entry) => sum + entry.inactiveTime, 0);
+  const inactiveTime = pumpData.reduce(
+    (sum, entry) => sum + entry.inactiveTime,
+    0,
+  );
 
   const data = [
     { name: "Active Time", value: activeTime, color: "#22c55e" },
@@ -11,8 +20,8 @@ function DurationChart({ pumpData }) {
   ];
 
   return (
-    <div className="bg-white border border-gray-100 rounded-lg p-6">
-      <p className="text-lg font-semibold text-gray-700 mb-4">
+    <div className="h-full rounded-lg border border-gray-100 bg-white p-6">
+      <p className="mb-4 text-lg font-semibold text-gray-700">
         Pump Operation Summary
       </p>
       <ResponsiveContainer width="100%" height={240}>
@@ -35,7 +44,7 @@ function DurationChart({ pumpData }) {
           <Legend
             verticalAlign="middle"
             align="right"
-            width='30%'
+            width="30%"
             layout="vertical"
             iconSize={10}
             iconType="circle"
