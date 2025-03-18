@@ -1,4 +1,5 @@
-const API_URL = "https://irrigation-system-be.onrender.com";
+// const API_URL = "https://irrigation-system-be.onrender.com";
+const API_URL = "http://localhost:4001";
 
 export const login = async (email, password) => {
   try {
