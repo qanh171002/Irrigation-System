@@ -2,6 +2,7 @@ import Stats from "./DashboardStats";
 import DurationChart from "./DurationChart";
 import { mockPumpData } from "../../data/mockData";
 import TodayActivity from "./TodayActivity";
+import RealtimeData from "../../data/RealTimeData";
 
 function DashboardLayout() {
   return (
@@ -13,7 +14,9 @@ function DashboardLayout() {
       <div className="col-span-2">
         <DurationChart pumpData={mockPumpData} />
       </div>
-      <div className="col-span-4">Last chart</div>
+      <div className="col-span-4">
+        <RealtimeData />
+      </div>
     </div>
   );
 }

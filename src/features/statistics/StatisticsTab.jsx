@@ -51,10 +51,10 @@ function StatisticsTab() {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab)}
-            className={`rounded-md px-4 py-2 text-xl font-normal ${
+            className={`rounded-md px-4 py-2 text-xl font-normal transition-colors duration-300 ${
               activeTab.id === tab.id
                 ? "bg-green-600 text-white"
-                : "bg-white text-gray-600"
+                : "bg-white text-gray-600 hover:bg-gray-100"
             }`}
           >
             {tab.label}
