@@ -1,39 +1,48 @@
 import {
-  HiOutlineArrowPath,
+  HiArrowTrendingDown,
+  HiArrowTrendingUp,
   HiOutlineCloud,
   HiOutlineEyeDropper,
   HiOutlineReceiptPercent,
 } from "react-icons/hi2";
 import Stat from "../../ui/Stat";
-import { formatTemperature } from "../../utils/helpers";
+import { useSensor } from "../../hooks/useSensor";
 
 function Stats() {
+  const { sensorData } = useSensor();
+
   return (
     <>
       <Stat
         title="Temperature"
         color="blue"
         icon={<HiOutlineEyeDropper />}
-        value={formatTemperature(25)}
+        value={sensorData.temperature + "°C"}
       />
       <Stat
         title="Humidity"
         color="green"
         icon={<HiOutlineCloud />}
-        value={20 + "%"}
+        value={sensorData.humidity + "%"}
       />
 
       <Stat
         title="Soil moisture"
         color="red"
         icon={<HiOutlineReceiptPercent />}
-        value={29 + "%"}
+        value={sensorData.soilMoisture + "%"}
       />
       <Stat
-        title="Pump status"
+        title="Low moisture"
+        color="gray"
+        icon={<HiArrowTrendingDown />}
+        value={sensorData.moistureThresholdLow + "%"}
+      />
+      <Stat
+        title="High moisture"
         color="yellow"
-        icon={<HiOutlineArrowPath />}
-        value={"ON"}
+        icon={<HiArrowTrendingUp />}
+        value={sensorData.moistureThresholdHigh + "%"}
       />
     </>
   );

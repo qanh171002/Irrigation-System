@@ -1,30 +1,26 @@
-import { HiOutlineBeaker, HiOutlineClock, HiOutlineReceiptPercent } from "react-icons/hi2";
+import { HiArrowsRightLeft, HiOutlineClock } from "react-icons/hi2";
 import Stat from "../../ui/Stat";
+import { useSensor } from "../../hooks/useSensor";
 
 function Stats() {
-        return (
-            <>
-              <Stat
-                title="Running time"
-                color="green"
-                icon={<HiOutlineClock />}
-                value={20 + '%'}
-              />
-        
-              <Stat
-                title="Water used"
-                color="blue"
-                icon={<HiOutlineBeaker />}
-                value={29 + '%'}
-              />
-              <Stat
-                title="Current soil moisture"
-                color="yellow"
-                icon={<HiOutlineReceiptPercent />}
-                value={'ON'}
-              />
-            </>
-          );
+  const { sensorData } = useSensor();
+  return (
+    <>
+      <Stat
+        title="Pump state"
+        color="green"
+        icon={<HiOutlineClock />}
+        value={sensorData.pumpState === 1 ? "Running" : "Not running"}
+      />
+
+      <Stat
+        title="Pump mode"
+        color="blue"
+        icon={<HiArrowsRightLeft />}
+        value={sensorData.pumpMode === 1 ? "Auto" : "Manual"}
+      />
+    </>
+  );
 }
 
-export default Stats
+export default Stats;

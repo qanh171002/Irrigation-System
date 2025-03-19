@@ -1,9 +1,8 @@
 // const API_URL = "https://irrigation-system-be.onrender.com";
-const API_URL = "http://localhost:4001";
-
+import { BASE_URL } from "../utils/constants";
 export const login = async (email, password) => {
   try {
-    const res = await fetch(`${API_URL}/users/login`, {
+    const res = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +35,7 @@ export const login = async (email, password) => {
 
 export const signup = async (email, password, username, role = "USER") => {
   try {
-    const res = await fetch(`${API_URL}/users/register`, {
+    const res = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
