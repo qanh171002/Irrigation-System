@@ -22,14 +22,18 @@ function MainNav() {
             <NavLink
               to={to}
               className={({ isActive }) =>
-                `group flex items-center gap-3 rounded px-6 py-3 text-lg font-medium text-gray-600 transition-all ${isActive ? "bg-gray-50 text-gray-700" : "hover:bg-gray-50 hover:text-gray-700"}`
+                `group flex items-center gap-3 rounded-xl px-4 py-3 text-base font-medium transition-all ${
+                  isActive
+                    ? "bg-primary-500 text-white"
+                    : "hover:bg-primary-50 text-neutral-600"
+                }`
               }
             >
               {({ isActive }) => (
                 <>
                   <Icon
-                    className={`h-6 w-6 text-gray-400 transition-all group-hover:text-green-600 ${
-                      isActive ? "text-green-600" : ""
+                    className={`h-5 w-5 ${
+                      isActive ? "text-white" : "text-neutral-400"
                     }`}
                   />
                   <span>{label}</span>

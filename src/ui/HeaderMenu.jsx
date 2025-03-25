@@ -12,7 +12,7 @@ function HeaderMenu() {
   return (
     <ul className="flex gap-1">
       <li>
-        <ButtonIcon>
+        <ButtonIcon onClick={() => navigate("/profile")}>
           <HiOutlineUser />
         </ButtonIcon>
       </li>

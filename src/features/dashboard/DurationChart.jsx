@@ -15,15 +15,13 @@ function DurationChart({ pumpData }) {
   );
 
   const data = [
-    { name: "Active Time", value: activeTime, color: "#22c55e" },
-    { name: "Inactive Time", value: inactiveTime, color: "#ef4444" },
+    { name: "Active Time", value: activeTime, color: "#4a944a" },
+    { name: "Inactive Time", value: inactiveTime, color: "#ffb3b3" },
   ];
 
   return (
     <div className="h-full rounded-lg border border-gray-100 bg-white p-6">
-      <p className="mb-4 text-lg font-semibold text-gray-700">
-        Pump Operation Summary
-      </p>
+      <p className="mb-4 text-lg font-semibold">Pump Operation Summary</p>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie

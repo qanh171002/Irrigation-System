@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary-50: #f0f9f0;
+  --color-primary-100: #dcf0dc;
+  --color-primary-200: #bce3bc;
+  --color-primary-300: #93cc93;
+  --color-primary-400: #70b570;
+  --color-primary-500: #4a944a;
+  --color-primary-600: #3d7a3d;
+  --color-primary-700: #336633;
+  --color-primary-800: #2b522b;
+  --color-primary-900: #244224;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   transition:

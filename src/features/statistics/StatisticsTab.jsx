@@ -29,14 +29,14 @@ const tabs = [
   {
     id: "moisture",
     label: "Soil Moisture",
-    color: "#4CAF50",
+    color: "#4a944a",
     dataKey: "moisture",
     unit: "%",
   },
   {
     id: "waterUsed",
     label: "Used Water",
-    color: "#2196F3",
+    color: "#3d7a3d",
     dataKey: "waterUsed",
     unit: "L",
   },
@@ -45,7 +45,7 @@ const tabs = [
 function StatisticsTab() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   return (
-    <div className="p-6">
+    <div className="rounded-md border border-gray-100 bg-white p-6">
       <div className="mt-4 flex w-fit gap-2 rounded-md border border-gray-200 p-2">
         {tabs.map((tab) => (
           <button
@@ -53,7 +53,7 @@ function StatisticsTab() {
             onClick={() => setActiveTab(tab)}
             className={`rounded-md px-4 py-2 text-xl font-normal transition-colors duration-300 ${
               activeTab.id === tab.id
-                ? "bg-green-600 text-white"
+                ? "bg-primary-500 text-white"
                 : "bg-white text-gray-600 hover:bg-gray-100"
             }`}
           >

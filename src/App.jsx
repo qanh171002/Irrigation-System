@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./features/authentication/ProtectedRoute";
 import Signup from "./pages/Signup";
 import { SensorProvider } from "./contexts/SensorContext";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="logs" element={<Logs />} />
               <Route path="statistics" element={<Statistics />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="profile" element={<Profile />} />
             </Route>
           </Route>
           <Route path="login" element={<Login />} />

@@ -1,6 +1,6 @@
 function UserAvatar() {
   return (
-    <div className="flex items-center gap-3 font-medium text-gray-600 text-sm">
+    <div className="flex items-center gap-3 text-sm font-medium text-gray-600">
       <span>TEST</span>
     </div>
   );

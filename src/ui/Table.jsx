@@ -5,7 +5,7 @@ const TableContext = createContext();
 function Table({ columns, children }) {
   return (
     <TableContext.Provider value={{ columns }}>
-      <div className="rounded-md border border-gray-200 bg-gray-50 text-sm">
+      <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm">
         {children}
       </div>
     </TableContext.Provider>
@@ -17,7 +17,7 @@ function Header({ children }) {
   return (
     <div
       role="row"
-      className={`grid ${columns} gap-x-6 border-b border-gray-200 bg-gray-100 p-4 font-semibold text-gray-600 uppercase`}
+      className={`grid ${columns} gap-x-6 border-b border-neutral-200 bg-neutral-50/80 p-5 text-sm font-semibold text-neutral-500`}
     >
       {children}
     </div>
@@ -29,7 +29,7 @@ function Row({ children }) {
   return (
     <div
       role="row"
-      className={`grid ${columns} gap-x-6 border-b border-gray-100 bg-gray-50 p-4 font-medium text-gray-600 last:border-none`}
+      className={`grid ${columns} gap-x-6 border-b border-neutral-100 p-5 text-sm transition-colors last:border-none hover:bg-neutral-50`}
     >
       {children}
     </div>
