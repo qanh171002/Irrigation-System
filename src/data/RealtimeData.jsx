@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-// const SOCKET_URL = "https://irrigation-system-be.onrender.com";
-const SOCKET_URL = "http://localhost:4001";
+const SOCKET_URL = "https://irrigation-system-be.onrender.com";
+// const SOCKET_URL = "http://localhost:4001";
 
 function RealtimeData() {
   const [temperature, setTemperature] = useState("N/A");

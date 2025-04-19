@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -8,15 +8,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-const data = [
-  { day: "Mon", temperature: 21, moisture: 60, waterUsed: 5 },
-  { day: "Tue", temperature: 23, moisture: 65, waterUsed: 4.5 },
-  { day: "Wed", temperature: 25, moisture: 70, waterUsed: 6 },
-  { day: "Thu", temperature: 26, moisture: 55, waterUsed: 5.2 },
-  { day: "Fri", temperature: 22, moisture: 68, waterUsed: 4.8 },
-  { day: "Sat", temperature: 19, moisture: 72, waterUsed: 5.5 },
-  { day: "Sun", temperature: 24, moisture: 63, waterUsed: 5.1 },
-];
+import { BASE_URL } from "../../utils/constants";
 
 const tabs = [
   {
@@ -34,16 +26,59 @@ const tabs = [
     unit: "%",
   },
   {
-    id: "waterUsed",
-    label: "Used Water",
-    color: "#3d7a3d",
-    dataKey: "waterUsed",
-    unit: "L",
+    id: "humidity",
+    label: "Humidity",
+    color: "#3B82F6",
+    dataKey: "humidity",
+    unit: "%",
   },
 ];
 
+const normalizeDay = (day) => {
+  const map = {
+    mon: "Mon",
+    tue: "Tue",
+    wed: "Wed",
+    thu: "Thu",
+    fri: "Fri",
+    sat: "Sat",
+    sun: "Sun",
+  };
+  return map[day.toLowerCase()] || day;
+};
+
 function StatisticsTab() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [chartData, setChartData] = useState([]);
+
+  useEffect(() => {
+    const fetchStatistics = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/sensors/data/statistics`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        });
+        if (res.ok) {
+          const json = await res.json();
+          const dataFromAPI = json.result.map((item) => ({
+            ...item,
+            day: normalizeDay(item.day),
+          }));
+          setChartData(dataFromAPI);
+        } else {
+          throw new Error("Get statistics failed");
+        }
+      } catch (error) {
+        console.error("Get error:", error.message);
+      }
+    };
+
+    fetchStatistics();
+  }, []);
+
   return (
     <div className="rounded-md border border-gray-100 bg-white p-6">
       <div className="mt-4 flex w-fit gap-2 rounded-md border border-gray-200 p-2">
@@ -64,26 +99,16 @@ function StatisticsTab() {
 
       <div className="mt-10 flex min-h-[450px] w-full justify-center p-4">
         <ResponsiveContainer width="70%" height={450}>
-          <BarChart data={data}>
+          <BarChart data={chartData}>
             <XAxis dataKey="day" />
             <YAxis
               ticks={
                 activeTab.id === "temperature"
-                  ? [0, 10, 20, 30, 40, 50]
-                  : activeTab.id === "moisture"
-                    ? [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
-                    : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                  ? [0, 10, 20, 30, 40]
+                  : [0, 20, 40, 60, 80, 100]
               }
-              domain={[
-                0,
-                activeTab.id === "temperature"
-                  ? 30
-                  : activeTab.id === "moisture"
-                    ? 100
-                    : 10,
-              ]}
+              domain={[0, activeTab.id === "temperature" ? 40 : 100]}
             />
-
             <Tooltip formatter={(value) => `${value} ${activeTab.unit}`} />
             <Legend />
             <Bar dataKey={activeTab.dataKey} fill={activeTab.color} />

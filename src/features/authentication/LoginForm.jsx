@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LoginForm() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("example1@gmail.com");
+  const [email, setEmail] = useState("tuan.leqn04@gmail.com");
   const [password, setPassword] = useState("Ahtnbk04?");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

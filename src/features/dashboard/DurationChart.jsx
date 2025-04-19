@@ -16,7 +16,11 @@ function DurationChart({ pumpData }) {
 
   const data = [
     { name: "Active Time", value: activeTime, color: "#4a944a" },
-    { name: "Inactive Time", value: inactiveTime, color: "#ffb3b3" },
+    {
+      name: "Inactive Time",
+      value: inactiveTime,
+      color: "#3B82F6",
+    },
   ];
 
   return (
