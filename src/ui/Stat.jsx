@@ -10,7 +10,7 @@ const COLORS = {
 
 function Stat({ icon, title, value, color = "gray" }) {
   return (
-    <div className="grid grid-cols-[4rem_1fr] grid-rows-2 gap-x-4 gap-y-1 rounded-md border border-gray-100 bg-white p-4">
+    <div className="grid grid-cols-[4rem_1fr] grid-rows-2 gap-x-4 gap-y-1 rounded-md border border-neutral-200 bg-white p-4">
       <div
         className={`row-span-2 flex aspect-square items-center justify-center rounded-full ${COLORS[color] || COLORS.gray}`}
       >

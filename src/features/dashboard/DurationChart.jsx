@@ -24,7 +24,7 @@ function DurationChart({ pumpData }) {
   ];
 
   return (
-    <div className="h-full rounded-lg border border-gray-100 bg-white p-6">
+    <div className="h-full rounded-lg border border-neutral-200 bg-white p-6">
       <p className="mb-4 text-lg font-semibold">Pump Operation Summary</p>
       <ResponsiveContainer width="100%" height={240}>
         <PieChart>

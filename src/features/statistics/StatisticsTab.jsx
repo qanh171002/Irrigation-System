@@ -80,7 +80,7 @@ function StatisticsTab() {
   }, []);
 
   return (
-    <div className="rounded-md border border-gray-100 bg-white p-6">
+    <div className="rounded-md border border-neutral-200 bg-white p-6">
       <div className="mt-4 flex w-fit gap-2 rounded-md border border-gray-200 p-2">
         {tabs.map((tab) => (
           <button

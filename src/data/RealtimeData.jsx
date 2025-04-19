@@ -112,7 +112,7 @@ function RealtimeData() {
 
 function Card({ title, value, unit }) {
   return (
-    <div className="rounded-lg border border-gray-100 bg-white p-6 text-center">
+    <div className="rounded-lg border border-neutral-200 bg-white p-6 text-center">
       <div className="rounded-t-lg bg-green-600 p-2 font-medium text-gray-100">
         {title}
       </div>

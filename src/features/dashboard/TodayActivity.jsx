@@ -4,7 +4,12 @@ import { BASE_URL } from "../../utils/constants";
 
 function TodayActivity() {
   const [logs, setLogs] = useState([]);
-  const today = new Date().toLocaleDateString("vi-VN");
+  const today = new Date();
+  const formattedToday = `${today.getDate().toString().padStart(2, "0")}/${(
+    today.getMonth() + 1
+  )
+    .toString()
+    .padStart(2, "0")}/${today.getFullYear()}`;
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -18,7 +23,7 @@ function TodayActivity() {
         if (res.ok) {
           const filteredLogs = data.result
             .map((log) => {
-              const [date, time] = log.timestamp.split(" ");
+              const [time, date] = log.timestamp.split(" ");
               const [hours, minutes] = time.split(":");
 
               return {
@@ -29,7 +34,7 @@ function TodayActivity() {
                 value: log.value,
               };
             })
-            .filter((log) => log.date === today);
+            .filter((log) => log.date === formattedToday);
 
           setLogs(filteredLogs);
         } else {
@@ -41,10 +46,10 @@ function TodayActivity() {
     };
 
     fetchLogs();
-  }, [today]);
+  }, [formattedToday]);
 
   return (
-    <div className="flex h-full flex-col rounded-lg border border-gray-100 bg-white p-6">
+    <div className="flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6">
       <p className="mb-4 text-lg font-semibold">Today Activity</p>
       <ul className="scrollbar-none flex-1 overflow-y-auto">
         {logs.length === 0 ? (
@@ -55,7 +60,7 @@ function TodayActivity() {
           logs.map((log) => (
             <li
               key={log.id}
-              className="grid grid-cols-[8rem_1fr_6rem] items-center gap-3 border-b border-gray-100 py-2 text-[1rem] first:border-t"
+              className="grid grid-cols-[8rem_1fr_6rem] items-center gap-3 border-b border-neutral-200 py-2 text-[1rem] first:border-t"
             >
               <Tag className="bg-primary-100 text-primary-700 ring-primary-100 ring-1">
                 {log.time}
