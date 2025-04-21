@@ -38,13 +38,13 @@ export function SensorProvider({ children }) {
       setSensorData((prev) => ({ ...prev, soilMoisture: data.value }));
     });
 
-    socket.on("moisture-threshold-high", (data) => {
-      setSensorData((prev) => ({ ...prev, moistureThresholdHigh: data.value }));
-    });
+    // socket.on("moisture-threshold-high", (data) => {
+    //   setSensorData((prev) => ({ ...prev, moistureThresholdHigh: data.value }));
+    // });
 
-    socket.on("moisture-threshold-low", (data) => {
-      setSensorData((prev) => ({ ...prev, moistureThresholdLow: data.value }));
-    });
+    // socket.on("moisture-threshold-low", (data) => {
+    //   setSensorData((prev) => ({ ...prev, moistureThresholdLow: data.value }));
+    // });
 
     socket.on("pump-mode", (data) => {
       setSensorData((prev) => ({ ...prev, pumpMode: data.value }));

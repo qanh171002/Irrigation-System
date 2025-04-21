@@ -14,7 +14,6 @@ import { getUserRole } from "./utils/getUserRole";
 
 function App() {
   const role = getUserRole();
-  console.log(role);
   return (
     <SensorProvider>
       <BrowserRouter>
