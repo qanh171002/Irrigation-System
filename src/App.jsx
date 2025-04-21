@@ -26,10 +26,9 @@ function App() {
               <Route path="control" element={<Control />} />
               <Route path="logs" element={<Logs />} />
               <Route path="statistics" element={<Statistics />} />
-              {/* {role === "ADMIN" && (
+              {role === "ADMIN" && (
                 <Route path="settings" element={<Settings />} />
-              )} */}
-              <Route path="settings" element={<Settings />} />
+              )}
 
               <Route path="profile" element={<Profile />} />
             </Route>
