@@ -33,7 +33,7 @@ function Settings() {
           highRes.json(),
         ]);
 
-        setMode(modeData.result ? "auto" : "manual");
+        setMode(modeData.result === true ? "automatic" : "manual");
         setLowThreshold(lowData.result);
         setHighThreshold(highData.result);
       } catch (err) {
@@ -61,7 +61,7 @@ function Settings() {
         fetch(`${BASE_URL}/devices/pump_mode`, {
           method: "POST",
           headers,
-          body: JSON.stringify({ mode }),
+          body: JSON.stringify({ mode: mode === "automatic" ? 1 : 0 }),
         }),
         fetch(`${BASE_URL}/devices/soil_moisture_threshold_low`, {
           method: "POST",

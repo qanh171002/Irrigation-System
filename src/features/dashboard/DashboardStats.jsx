@@ -79,7 +79,7 @@ function Stats() {
               <SpinnerMini />
             </div>
           ) : moistureThresholdLow !== null ? (
-            moistureThresholdLow + "%"
+            moistureThresholdLow
           ) : (
             "N/A"
           )
@@ -95,7 +95,7 @@ function Stats() {
               <SpinnerMini />
             </div>
           ) : moistureThresholdHigh !== null ? (
-            moistureThresholdHigh + "%"
+            moistureThresholdHigh
           ) : (
             "N/A"
           )
