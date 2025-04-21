@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Tag from "../../ui/Tag";
 import { BASE_URL } from "../../utils/constants";
+import Spinner from "../../ui/Spinner";
 
 function TodayActivity() {
   const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
   const today = new Date();
   const formattedToday = `${today.getDate().toString().padStart(2, "0")}/${(
     today.getMonth() + 1
@@ -14,6 +16,7 @@ function TodayActivity() {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
+        setLoading(true);
         const res = await fetch(`${BASE_URL}/sensors/data/logs`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("access_token")}`,
@@ -42,6 +45,8 @@ function TodayActivity() {
         }
       } catch (err) {
         console.error("Error fetching logs:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -52,7 +57,9 @@ function TodayActivity() {
     <div className="flex h-full flex-col rounded-lg border border-neutral-200 bg-white p-6">
       <p className="mb-4 text-lg font-semibold">Today Activity</p>
       <ul className="scrollbar-none flex-1 overflow-y-auto">
-        {logs.length === 0 ? (
+        {loading ? (
+          <Spinner />
+        ) : logs.length === 0 ? (
           <li className="rounded-md bg-gray-100 p-4 text-center text-base font-medium shadow-md">
             No activity today...
           </li>

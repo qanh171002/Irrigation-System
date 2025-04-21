@@ -9,11 +9,13 @@ import Stat from "../../ui/Stat";
 import { useSensor } from "../../hooks/useSensor";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../utils/constants";
+import SpinnerMini from "../../ui/SpinnerMini";
 
 function Stats() {
   const { sensorData } = useSensor();
   const [moistureThresholdLow, setMoistureThresholdLow] = useState(null);
   const [moistureThresholdHigh, setMoistureThresholdHigh] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getMoistureThreshold = async () => {
@@ -25,6 +27,7 @@ function Stats() {
         const headers = {
           Authorization: `Bearer ${token}`,
         };
+        setLoading(true);
         const [lowRes, highRes] = await Promise.all([
           fetch(`${BASE_URL}/devices/soil_moisture_threshold_low`, { headers }),
           fetch(`${BASE_URL}/devices/soil_moisture_threshold_high`, {
@@ -37,6 +40,8 @@ function Stats() {
         setMoistureThresholdHigh(highData.result);
       } catch (error) {
         console.error(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -57,19 +62,27 @@ function Stats() {
         icon={<HiOutlineCloud />}
         value={sensorData.humidity + "%"}
       />
-
       <Stat
         title="Soil moisture"
         color="red"
         icon={<HiOutlineReceiptPercent />}
         value={sensorData.soilMoisture + "%"}
       />
+
       <Stat
         title="Low moisture"
         color="gray"
         icon={<HiArrowTrendingDown />}
         value={
-          moistureThresholdLow !== null ? moistureThresholdLow + "%" : "N/A"
+          loading ? (
+            <div className="justify-left flex items-center">
+              <SpinnerMini />
+            </div>
+          ) : moistureThresholdLow !== null ? (
+            moistureThresholdLow + "%"
+          ) : (
+            "N/A"
+          )
         }
       />
       <Stat
@@ -77,7 +90,15 @@ function Stats() {
         color="yellow"
         icon={<HiArrowTrendingUp />}
         value={
-          moistureThresholdHigh !== null ? moistureThresholdHigh + "%" : "N/A"
+          loading ? (
+            <div className="justify-left flex items-center">
+              <SpinnerMini />
+            </div>
+          ) : moistureThresholdHigh !== null ? (
+            moistureThresholdHigh + "%"
+          ) : (
+            "N/A"
+          )
         }
       />
     </>

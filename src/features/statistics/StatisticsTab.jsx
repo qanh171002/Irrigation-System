@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { BASE_URL } from "../../utils/constants";
+import Spinner from "../../ui/Spinner";
 
 const tabs = [
   {
@@ -50,6 +51,7 @@ const normalizeDay = (day) => {
 function StatisticsTab() {
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const [chartData, setChartData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchStatistics = async () => {
@@ -73,6 +75,8 @@ function StatisticsTab() {
         }
       } catch (error) {
         console.error("Get error:", error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -98,7 +102,9 @@ function StatisticsTab() {
       </div>
 
       <div className="mt-10 flex min-h-[450px] w-full justify-center p-4">
-        {chartData.length === 0 ? (
+        {loading ? (
+          <Spinner />
+        ) : chartData.length === 0 ? (
           <div className="flex items-center justify-center text-lg font-medium">
             No data to show at the moment
           </div>

@@ -21,7 +21,9 @@ function Stat({ icon, title, value, color = "gray" }) {
         {title}
       </h5>
 
-      <p className="text-2xl leading-none font-medium text-gray-700">{value}</p>
+      <div className="text-2xl leading-none font-medium text-gray-700">
+        {value}
+      </div>
     </div>
   );
 }
