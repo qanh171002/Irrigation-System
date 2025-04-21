@@ -10,8 +10,11 @@ import ProtectedRoute from "./features/authentication/ProtectedRoute";
 import Signup from "./pages/Signup";
 import { SensorProvider } from "./contexts/SensorContext";
 import Profile from "./pages/Profile";
+import { getUserRole } from "./utils/getUserRole";
 
 function App() {
+  const role = getUserRole();
+  console.log(role);
   return (
     <SensorProvider>
       <BrowserRouter>
@@ -24,7 +27,9 @@ function App() {
               <Route path="control" element={<Control />} />
               <Route path="logs" element={<Logs />} />
               <Route path="statistics" element={<Statistics />} />
-              <Route path="settings" element={<Settings />} />
+              {role === "ADMIN" && (
+                <Route path="settings" element={<Settings />} />
+              )}
               <Route path="profile" element={<Profile />} />
             </Route>
           </Route>

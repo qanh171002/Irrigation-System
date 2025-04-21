@@ -53,7 +53,7 @@ function TodayActivity() {
       <p className="mb-4 text-lg font-semibold">Today Activity</p>
       <ul className="scrollbar-none flex-1 overflow-y-auto">
         {logs.length === 0 ? (
-          <li className="rounded-md bg-gray-100 p-4 text-center font-medium text-gray-500 italic shadow-md">
+          <li className="rounded-md bg-gray-100 p-4 text-center text-base font-medium shadow-md">
             No activity today...
           </li>
         ) : (

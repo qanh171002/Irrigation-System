@@ -98,22 +98,28 @@ function StatisticsTab() {
       </div>
 
       <div className="mt-10 flex min-h-[450px] w-full justify-center p-4">
-        <ResponsiveContainer width="70%" height={450}>
-          <BarChart data={chartData}>
-            <XAxis dataKey="day" />
-            <YAxis
-              ticks={
-                activeTab.id === "temperature"
-                  ? [0, 10, 20, 30, 40]
-                  : [0, 20, 40, 60, 80, 100]
-              }
-              domain={[0, activeTab.id === "temperature" ? 40 : 100]}
-            />
-            <Tooltip formatter={(value) => `${value} ${activeTab.unit}`} />
-            <Legend />
-            <Bar dataKey={activeTab.dataKey} fill={activeTab.color} />
-          </BarChart>
-        </ResponsiveContainer>
+        {chartData.length === 0 ? (
+          <div className="flex items-center justify-center text-lg font-medium">
+            No data to show at the moment
+          </div>
+        ) : (
+          <ResponsiveContainer width="70%" height={450}>
+            <BarChart data={chartData}>
+              <XAxis dataKey="day" />
+              <YAxis
+                ticks={
+                  activeTab.id === "temperature"
+                    ? [0, 10, 20, 30, 40]
+                    : [0, 20, 40, 60, 80, 100]
+                }
+                domain={[0, activeTab.id === "temperature" ? 40 : 100]}
+              />
+              <Tooltip formatter={(value) => `${value} ${activeTab.unit}`} />
+              <Legend />
+              <Bar dataKey={activeTab.dataKey} fill={activeTab.color} />
+            </BarChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   );
