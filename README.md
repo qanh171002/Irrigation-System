@@ -2,8 +2,6 @@
 
 > Đồ án Đa Ngành - Hướng Công Nghệ Phần Mềm
 
-[🔗 Truy cập hệ thống tại đây](https://irrigation-system-lemon.vercel.app)
-
 ## Mô tả dự án
 
 Hệ thống tưới nước thông minh được xây dựng nhằm hỗ trợ người dùng giám sát và điều khiển quá trình tưới tiêu từ xa một cách hiệu quả, linh hoạt và chính xác. Ứng dụng cung cấp giao diện dashboard trực quan giúp hiển thị các chỉ số môi trường như độ ẩm, nhiệt độ, và trạng thái bơm nước theo thời gian thực.
@@ -33,7 +31,7 @@ Hệ thống tưới nước thông minh được xây dựng nhằm hỗ trợ 
 - **React** (với Vite)
 - **Tailwind CSS**
 - **React Toastify** (thông báo)
-- **RESTful API** từ thiết bị IoT (ESP32/Raspberry Pi, etc.)
+- **RESTful API** từ thiết bị IoT
 - **Vercel** (triển khai)
 
 ---
